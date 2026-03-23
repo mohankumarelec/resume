@@ -1,30 +1,33 @@
 # Resume
 
-Personal résumé built from LaTeX and published as a PDF.
+Hey — this is my personal CV, built in LaTeX and shipped as a PDF.
 
-## Repository layout
+**Want to see it?** Here’s the résumé (opens as a PDF):
 
-| File | Purpose |
-|------|---------|
-| `resume.tex` | Source (custom layout, `fontspec`, TikZ, Font Awesome icons) |
-| `index.html` | Minimal landing page that redirects to `resume.pdf` (for GitHub Pages) |
-| `resume.pdf` | Compiled output (ignored in git; produced by CI or a local build) |
+**[https://mohankumarelec.github.io/resume/resume.pdf](https://mohankumarelec.github.io/resume/resume.pdf)**
 
-## Local build
+If you like the layout or workflow, feel free to fork or copy whatever helps for yours — no need to ask.
 
-Install [Tectonic](https://tectonic-typesetting.github.io/) and compile:
+---
+
+## What’s in here
+
+| File | What it does |
+|------|----------------|
+| `resume.tex` | The source — custom layout, `fontspec`, TikZ, Font Awesome, etc. |
+| `index.html` | Tiny GitHub Pages page that sends you to the PDF |
+| `resume.pdf` | The built file (not in git; CI or your machine makes it) |
+
+Fonts live under `fonts/` — keep those paths happy if you compile locally.
+
+## Build it yourself
+
+With [Tectonic](https://tectonic-typesetting.github.io/):
 
 ```bash
 tectonic --keep-logs resume.tex
 ```
 
-`resume.tex` loads fonts from local paths under `fonts/`; keep those files in place where you build.
+## CI & Pages
 
-## CI and hosting
-
-[`.github/workflows/build-resume.yml`](.github/workflows/build-resume.yml) runs on pushes and pull requests to `main`:
-
-- Compiles `resume.tex` with Tectonic (with a cache for Tectonic bundles).
-- Uploads `resume.pdf` as a workflow artifact.
-
-On pushes to `main`, the same workflow also deploys a small site (`resume.pdf` + `index.html`) to **GitHub Pages** via `actions/deploy-pages`. Enable Pages in the repository settings (source: GitHub Actions) if you use this.
+[`.github/workflows/build-resume.yml`](.github/workflows/build-resume.yml) runs on pushes/PRs to `main`: Tectonic builds the PDF, uploads an artifact, and on `main` pushes it deploys to GitHub Pages (`resume.pdf` + `index.html`). In repo **Settings → Pages**, use **GitHub Actions** as the source so that PDF URL above stays live.
