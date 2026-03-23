@@ -1,0 +1,274 @@
+\documentclass[a4paper]{article}
+
+\usepackage[top=0pt, bottom=0pt, left=0pt, right=0pt]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fontspec}
+\usepackage{fontawesome5}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{parskip}
+\usepackage{ragged2e}
+\usepackage[absolute,overlay]{textpos}
+
+\definecolor{sidebar}{RGB}{0, 102, 102}
+\definecolor{sidetext}{RGB}{255, 255, 255}
+\definecolor{sidedesc}{RGB}{224, 224, 224}
+\definecolor{siderule}{RGB}{255, 255, 255}
+\definecolor{maintext}{RGB}{62, 62, 62}
+\definecolor{accent}{RGB}{26, 176, 179}
+\definecolor{iconcolor}{RGB}{185, 185, 185}
+\definecolor{mainrule}{RGB}{180, 180, 180}
+
+\setmainfont{Inter}[
+  Path=fonts/inter/extras/ttf/,
+  Extension=.ttf,
+  UprightFont=Inter-Regular,
+  BoldFont=Inter-Bold,
+]
+
+\newfontfamily\rubik{Rubik-Variable}[
+  Path=fonts/rubik/,
+  Extension=.ttf,
+]
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\setlength{\TPHorizModule}{1pt}
+\setlength{\TPVertModule}{1pt}
+
+\newcommand{\sidebarsection}[1]{%
+  \vspace{17pt}%
+  {\rubik\fontsize{10.1}{12}\selectfont\color{sidetext}\MakeUppercase{#1}\par}%
+  \vspace{3pt}%
+  {\fontsize{1}{1}\selectfont\color{siderule!40}\rule{\linewidth}{0.4pt}\par}%
+  \vspace{6pt}%
+}
+
+\newcommand{\mainsection}[1]{%
+  \vspace{17pt}%
+  {\rubik\fontsize{10.1}{12}\selectfont\color{maintext}\MakeUppercase{#1}\par}%
+  \vspace{3pt}%
+  {\fontsize{1}{1}\selectfont\color{mainrule}\rule{\linewidth}{0.4pt}\par}%
+  \vspace{6pt}%
+}
+
+\newcommand{\experienceheader}[2]{%
+  {\rubik\fontsize{9.5}{11.5}\selectfont\color{maintext}#1\hfill}%
+  {\fontsize{7.6}{9.5}\selectfont\color{maintext}#2\par}%
+}
+
+\newcommand{\experiencecompanyonly}[1]{%
+  {\rubik\fontsize{8.9}{10.5}\selectfont\color{accent}#1\par}%
+  \vspace{2pt}%
+}
+
+\newcommand{\experiencecompanyloc}[2]{%
+  {\rubik\fontsize{8.9}{10.5}\selectfont\color{accent}#1\hfill}%
+  {\fontsize{7.6}{9.5}\selectfont\color{maintext}#2\par}%
+  \vspace{2pt}%
+}
+
+\newcommand{\experiencebullet}[1]{%
+  \hangindent=11pt\hangafter=1%
+  {\fontsize{7.6}{9.5}\selectfont\color{maintext}\textbullet\hspace{4pt}#1\par}%
+}
+
+\newcommand{\sideaward}[1]{%
+  \hangindent=17pt\hangafter=1%
+  {\color{sidetext}\faIcon{trophy}}\hspace{6pt}%
+  {\rubik\fontsize{9.5}{11.5}\selectfont\color{sidetext}#1\par}%
+  \vspace{12pt}%
+}
+
+\newcommand{\sideachievement}[2]{%
+  \hangindent=17pt\hangafter=1%
+  {\color{sidetext}\faIcon{trophy}}\hspace{6pt}%
+  {\rubik\fontsize{9.5}{11.5}\selectfont\color{sidetext}#1\par}%
+  \vspace{2pt}%
+  {\fontsize{7.6}{9.5}\selectfont\color{sidedesc}#2\par}%
+  \vspace{8pt}%
+}
+
+\newcommand{\proficiencydots}[1]{%
+  \foreach \i in {1,...,5}{%
+    \ifnum\i>#1\relax%
+      \tikz[baseline=-0.5ex]\draw[sidetext, line width=0.5pt] (0,0) circle (2pt);%
+    \else%
+      \tikz[baseline=-0.5ex]\fill[sidetext] (0,0) circle (2pt);%
+    \fi%
+    \hspace{0.5pt}%
+  }%
+}
+
+\begin{document}
+
+% Draw sidebar background
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[sidebar] (current page.north west) rectangle ([xshift=207pt]current page.south west);
+\end{tikzpicture}
+
+% ============= SIDEBAR CONTENT =============
+\begin{textblock*}{153pt}(31pt, 31pt)
+\parskip=0pt\relax%
+\color{sidetext}%
+{\rubik\fontsize{17.8}{21}\selectfont MOHANKUMAR\\RAMACHANDRAN\par}%
+
+\vspace{18pt}%
+
+\sidebarsection{Key Achievements}
+
+\sideachievement{Open-Source AI Native IDE}{Gained 2K+ GitHub stars and 15K+ downloads, with zero marketing}
+
+\sideachievement{Interactive Portfolio Website}{A Windows XP-themed web experience that tells my childhood story}
+
+\sideachievement{Built 3D Scanner}{End-to-end photogrammetry scanner, built from scratch in 3 months}
+
+\sideachievement{Innovative QR File Transfer}{Developed a tool enabling 100\% offline file transfers using QR codes}
+
+\sidebarsection{Publications}
+
+{\rubik\fontsize{9.5}{11.5}\selectfont\color{sidetext}Method and System for\\Facilitating Payment\\Transactions in Offline Mode\par}%
+\vspace{5pt}%
+{\fontsize{7.6}{9.5}\selectfont\color{sidedesc}\href{https://www.tdcommons.org/dpubs_series/3754/}{https://www.tdcommons.org/dpubs\_series\\/3754/}\par}%
+\vspace{10pt}%
+{\rubik\fontsize{9.5}{11.5}\selectfont\color{sidetext}Method and System for\\Processing Queries with Query\\Filters on a Server\par}%
+\vspace{5pt}%
+{\fontsize{7.6}{9.5}\selectfont\color{sidedesc}\href{https://www.tdcommons.org/dpubs_series/5562/}{https://www.tdcommons.org/dpubs\_series\\/5562/}\par}%
+
+\sidebarsection{Skills}
+
+{\fontsize{7.6}{12}\selectfont\color{sidetext}%
+Agentic AI \textperiodcentered{} LangGraph \textperiodcentered{} LangChain\par
+RAG Pipelines \textperiodcentered{} Langfuse \textperiodcentered{} Python\par
+TypeScript \textperiodcentered{} JavaScript \textperiodcentered{} FastAPI\par
+Nuxt \textperiodcentered{} Vue.js \textperiodcentered{} Tailwind CSS\par
+Cloudflare Workers \textperiodcentered{} AWS \textperiodcentered{} Hadoop\par}%
+
+\sidebarsection{Open Source}
+
+{\fontsize{7.6}{9.5}\selectfont\color{sidedesc}Merged PRs to:\par}%
+\vspace{4pt}%
+{\fontsize{7.6}{10}\selectfont\color{sidetext}%
+\textbullet\hspace{4pt}Microsoft VS Code\par
+\textbullet\hspace{4pt}LangChain-AI / LangGraph\par
+\textbullet\hspace{4pt}Hono.js\par
+\textbullet\hspace{4pt}Continue (AI IDE)\par
+\textbullet\hspace{4pt}Google Firebase\par
+\textbullet\hspace{4pt}A2A Protocol\par
+\textbullet\hspace{4pt}Portkey AI Gateway\par
+\textbullet\hspace{4pt}and many more\par}%
+
+\sidebarsection{Languages}
+
+\vspace{1pt}%
+{\rubik\fontsize{8.9}{12}\selectfont\color{sidetext}Tamil}%
+\hfill%
+\proficiencydots{5}%
+\hspace{3pt}%
+{\fontsize{7.6}{12}\selectfont\color{sidetext}Native\par}%
+\vspace{6pt}%
+{\rubik\fontsize{8.9}{12}\selectfont\color{sidetext}English}%
+\hfill%
+\proficiencydots{4}%
+\hspace{3pt}%
+{\fontsize{7.6}{12}\selectfont\color{sidetext}Proficient\par}%
+
+\end{textblock*}
+
+% ============= MAIN CONTENT =============
+\begin{textblock*}{342pt}(223pt, 27pt)
+\parskip=0pt\relax%
+\color{maintext}%
+
+\hspace{7pt}{\fontsize{10.1}{12}\selectfont\color{accent}Open Source Contributor \textbar{} Tech Blogger \textbar{} Software Engineer\par}%
+\vspace{8pt}%
+
+\hspace{7pt}{\fontsize{8.2}{13}\selectfont\color{maintext}%
+\mbox{{\color{iconcolor}\faGithub}\hspace{4pt}{\rubik \href{https://github.com/mohankumarelec}{https://github.com/mohankumarelec}}}%
+\hspace{10pt}%
+\mbox{{\color{iconcolor}\faGlobe}\hspace{4pt}{\rubik \href{https://mohanram.dev}{https://mohanram.dev}}}\par}%
+\hspace{7pt}{\fontsize{8.2}{13}\selectfont\color{maintext}%
+\mbox{{\color{iconcolor}\faEnvelope}\hspace{4pt}{\rubik \href{mailto:mail@mohanram.dev}{mail@mohanram.dev}}}%
+\hspace{14pt}%
+\mbox{{\color{iconcolor}\faLinkedin}\hspace{4pt}{\rubik \href{https://www.linkedin.com/in/mohrama}{https://www.linkedin.com/in/mohrama}}}\par}%
+
+\mainsection{Summary}
+
+{\fontsize{7.6}{9.5}\selectfont\color{maintext}%
+Engineer at heart — I like building things that work well and sharing them with the world. Over the years, I've worked across AI, data, full-stack, and infrastructure, picking up whatever's needed to ship good software.\par}%
+\vspace{8pt}%
+{\fontsize{7.6}{9.5}\selectfont\color{maintext}%
+Most of my side projects end up open source. I learn best by building, and if it helps someone else along the way, even better.\par}%
+\vspace{8pt}%
+{\fontsize{7.6}{9.5}\selectfont\color{maintext}%
+When I'm not coding for work, I'm usually tinkering with my homelab — self-hosting things, breaking things, fixing things.\par}%
+
+\mainsection{Experience}
+
+\experienceheader{Principal Software Engineer}{01/2026 - Present}
+\experiencecompanyonly{\href{https://www.redhat.com}{Red Hat}}
+
+\experiencebullet{Building agentic AI systems at scale — end-to-end development covering observability, evaluation, scalability, and production-grade deployment pipelines.}
+
+\vspace{12pt}
+\experienceheader{Full Stack Generative AI Engineer}{04/2025 - 01/2026}
+\experiencecompanyonly{\href{https://www.gsk.com}{GSK Plc}}
+
+\experiencebullet{Built AIGA, a LangGraph-inspired Python framework for GenAI app development with reusable agents and sub-agents, enabling rapid prototyping and deployment across GSK.}
+
+\experiencebullet{Designed standardized protocol wrappers (A2A, MCP) to expose agents and tools for cross-team and cross-platform AI integration across GSK.}
+
+\vspace{12pt}
+\experienceheader{Founder}{08/2024 - 04/2025}
+\experiencecompanyonly{\href{https://flexpilot.ai}{Flexpilot AI}}
+
+\experiencebullet{Founded flexpilot.ai, an open-source AI-native IDE and VS Code extension — hit \textbf{2K+ GitHub stars} and \textbf{15K+ marketplace downloads} in under 2 months.}
+
+\experiencebullet{Only open-source IDE to support GitHub Copilot Extensions (Agent Marketplace) while using VS Code's native UI.}
+
+\vspace{12pt}
+\experienceheader{Data Scientist / Data Engineer}{06/2019 - 08/2024}
+\experiencecompanyloc{\href{https://corporate.visa.com}{Visa Inc.}}{Bengaluru, India}
+
+\experiencebullet{Built an OpenAI-compatible proxy server for Visa's internal AI platform, letting developers use frameworks like LangChain directly — increased developer productivity by 2x and won the company hackathon.}
+
+\experiencebullet{Built generative AI tools for the sales team to create presentations using Office JavaScript APIs.}
+
+\experiencebullet{Led a next-gen analytics platform for analyzing billion-dollar revenue data using Hadoop, Hive, Spark, and Tableau.}
+
+\experiencebullet{Built a custom semantic layer with a JDBC driver to optimize BI query routing, reducing license costs by \$5M annually and winning a separate company hackathon.}
+
+\vspace{12pt}
+\experienceheader{Freelancer}{08/2015 - 06/2019}
+\experiencecompanyloc{\href{https://www.freelancer.in/u/mohankumarelec}{https://www.freelancer.in/u/mohankumarelec}}{Chennai, India}
+
+\experiencebullet{Designed and delivered solutions in Python, Node.js, and Gen AI with a 95\%+ client satisfaction rate across multiple freelance projects.}
+
+\mainsection{Education}
+
+\experienceheader{M.Tech, Electrical Engineering}{06/2018 - 06/2019}
+\experiencecompanyonly{\href{https://www.iitm.ac.in}{Indian Institute of Technology Madras}}
+
+\vspace{2pt}
+\experienceheader{B.Tech, Electrical Engineering}{06/2014 - 06/2018}
+\experiencecompanyonly{\href{https://www.iitm.ac.in}{Indian Institute of Technology Madras}}
+
+\mainsection{Fun Projects}
+
+\experienceheader{Air-Gapped QR Code Transfer}{11/2023 - 12/2023}
+\vspace{4pt}
+
+{\fontsize{7.6}{9.5}\selectfont\color{maintext}%
+Web-based tool for 100\% offline file transfer via QR codes — built with Vue.js, pako, qrcode.js, and zbar-wasm for encoding, compression, and scanning.\par}%
+\vspace{3pt}%
+{\fontsize{7.6}{9.5}\selectfont\color{maintext}%
+\href{https://github.com/mohankumarelec/airgapped-qr-code-transfer}{https://github.com/mohankumarelec/airgapped-qr-code-transfer}\par}%
+
+\end{textblock*}
+
+\mbox{}
+
+\end{document}
